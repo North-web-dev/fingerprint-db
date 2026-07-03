@@ -1,0 +1,82 @@
+{
+  "$schema": "./schema.json",
+  "metadata": {
+    "description": "Current browser TLS (JA3/JA4) + HTTP/2 (Akamai) fingerprints, measured not guessed.",
+    "measured_source": "tls.peet.ws",
+    "utls_version": "v1.8.2",
+    "updated": "2026-07-03",
+    "note": "JA3/JA4 vary slightly by measuring tool and GREASE; values here measured via uTLS *_Auto templates."
+  },
+  "browsers": {
+    "chrome": {
+      "utls_client_hello_id": "HelloChrome_Auto",
+      "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36",
+      "tls": {
+        "ja3": "771,4865-4866-4867-49195-49199-49196-49200-52393-52392-49171-49172-156-157-47-53,27-18-51-5-45-35-0-10-16-23-13-65281-17613-11-43-65037,4588-29-23-24,0",
+        "ja3_hash": "0b8a3d13236c51b15ed53ac3edab8839",
+        "ja4": "t13d1516h2_8daaf6152771_d8a2da3f94cd",
+        "peetprint_hash": "1d4ffe9b0e34acac0bd883fa7f79d7b5"
+      },
+      "http2": {
+        "akamai_fingerprint": "1:65536;2:0;4:6291456;6:262144|15663105|0|m,a,s,p",
+        "akamai_hash": "52d84b11737d980aef856699f885ca86"
+      }
+    },
+    "edge": {
+      "utls_client_hello_id": "HelloEdge_Auto",
+      "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36 Edg/131.0.0.0",
+      "tls": {
+        "ja3": "771,4865-4866-4867-49195-49199-49196-49200-52393-52392-49171-49172-156-157-47-53,0-23-65281-10-11-35-16-5-13-18-51-45-43-27-21,29-23-24,0",
+        "ja3_hash": "b32309a26951912be7dba376398abc3b",
+        "ja4": "t13d1515h2_8daaf6152771_bc9a4605e104",
+        "peetprint_hash": "774b2dfef6c8424cf8bc181f3c992999"
+      },
+      "http2": {
+        "akamai_fingerprint": "1:65536;2:0;4:6291456;6:262144|15663105|0|m,a,s,p",
+        "akamai_hash": "52d84b11737d980aef856699f885ca86"
+      }
+    },
+    "firefox": {
+      "utls_client_hello_id": "HelloFirefox_Auto",
+      "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:133.0) Gecko/20100101 Firefox/133.0",
+      "tls": {
+        "ja3": "771,4865-4867-4866-49195-49199-52393-52392-49196-49200-49162-49161-49171-49172-156-157-47-53,0-23-65281-10-11-35-16-5-34-51-43-13-45-28-65037,29-23-24-25-256-257,0",
+        "ja3_hash": "b5001237acdf006056b409cc433726b0",
+        "ja4": "t13d1715h2_5b57614c22b0_5c2c66f702b0",
+        "peetprint_hash": "b9c611f928c8c1f20c414a48c66abf27"
+      },
+      "http2": {
+        "akamai_fingerprint": "1:65536;4:131072;5:16384|12517377|0|m,p,a,s",
+        "akamai_hash": "1366b660f01a0a73d5578fc3c06dc011"
+      }
+    },
+    "ios": {
+      "utls_client_hello_id": "HelloIOS_Auto",
+      "user_agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 17_4 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.4 Mobile/15E148 Safari/604.1",
+      "tls": {
+        "ja3": "771,4865-4866-4867-49196-49195-52393-49200-49199-52392-49188-49187-49162-49161-49192-49191-49172-49171-157-156-61-60-53-47-49160-49170-10,0-23-65281-10-11-16-5-13-18-51-45-43-21,29-23-24-25,0",
+        "ja3_hash": "656b9a2f4de6ed4909e157482860ab3d",
+        "ja4": "t13d2613h2_2802a3db6c62_38ba08824cc9",
+        "peetprint_hash": "c546fbd702c2cd34f2cd01966abb0166"
+      },
+      "http2": {
+        "akamai_fingerprint": "3:100;4:2097152|10420225|0|m,s,p,a",
+        "akamai_hash": "1c3c4a69d698caccf99ff56ab8ddade6"
+      }
+    },
+    "safari": {
+      "utls_client_hello_id": "HelloSafari_Auto",
+      "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.4 Safari/605.1.15",
+      "tls": {
+        "ja3": "771,4865-4866-4867-49196-49195-52393-49200-49199-52392-49162-49161-49172-49171-157-156-53-47-49160-49170-10,0-23-65281-10-11-16-5-13-18-51-45-43-27-21,29-23-24-25,0",
+        "ja3_hash": "773906b0efdefa24a7f2b8eb6985bf37",
+        "ja4": "t13d2014h2_a09f3c656075_874d27d7ca63",
+        "peetprint_hash": "b2bafdc69377086c3416be278fd21121"
+      },
+      "http2": {
+        "akamai_fingerprint": "3:100;4:4194304|10420225|0|m,s,p,a",
+        "akamai_hash": "51bd911b8be80498e6b0004a7f40691f"
+      }
+    }
+  }
+}

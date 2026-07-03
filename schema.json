@@ -1,0 +1,23 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "required": ["metadata", "browsers"],
+  "properties": {
+    "metadata": {"type": "object"},
+    "browsers": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "required": ["utls_client_hello_id", "user_agent", "tls", "http2"],
+        "properties": {
+          "utls_client_hello_id": {"type": "string"},
+          "user_agent": {"type": "string"},
+          "tls": {"type": "object", "required": ["ja3", "ja4"],
+            "properties": {"ja3": {"type": "string"}, "ja3_hash": {"type": "string"}, "ja4": {"type": "string"}, "peetprint_hash": {"type": "string"}}},
+          "http2": {"type": "object", "required": ["akamai_fingerprint"],
+            "properties": {"akamai_fingerprint": {"type": "string"}, "akamai_hash": {"type": "string"}}}
+        }
+      }
+    }
+  }
+}
