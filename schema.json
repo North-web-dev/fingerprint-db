@@ -12,6 +12,8 @@
         "properties": {
           "utls_client_hello_id": {"type": "string"},
           "user_agent": {"type": "string"},
+          "source": {"type": "string", "description": "Where this entry was measured, e.g. 'tls.peet.ws'. Recommended for new entries."},
+          "measured": {"type": "string", "format": "date", "description": "ISO date (YYYY-MM-DD) the entry was measured. Recommended for new entries."},
           "tls": {"type": "object", "required": ["ja3", "ja4"],
             "properties": {"ja3": {"type": "string"}, "ja3_hash": {"type": "string"}, "ja4": {"type": "string"}, "peetprint_hash": {"type": "string"}}},
           "http2": {"type": "object", "required": ["akamai_fingerprint"],

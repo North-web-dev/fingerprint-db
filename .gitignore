@@ -1,2 +1,4 @@
 /cmd/measure/measure
 *.test
+__pycache__/
+*.pyc

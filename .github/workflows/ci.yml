@@ -8,8 +8,11 @@ jobs:
       - uses: actions/setup-python@v5
         with: { python-version: "3.11" }
       - run: pip install jsonschema
-      - run: python -c "import json,jsonschema; jsonschema.validate(json.load(open('fingerprints.json')), json.load(open('schema.json'))); print('schema OK')"
+      # Validates fingerprints.json against schema.json + completeness/format
+      # checks. Runs on every push AND pull_request, so any new or edited entry
+      # is checked automatically before merge.
+      - run: python validate.py
       - run: python -c "import fingerprint_db; assert fingerprint_db.get('chrome')['tls']['ja4']; print('python loader OK')"
       - uses: actions/setup-go@v5
-        with: { go-version: "1.25" }
+        with: { go-version: "1.23" }
       - run: go build ./... && go test ./...
