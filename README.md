@@ -91,6 +91,18 @@ python3 validate.py
 go test ./...
 ```
 
+## Support
+
+⭐ Star the repo if it helped. If this dataset saves you time, you can support development:
+
+| Coin | Address |
+|---|---|
+| **BTC** | `bc1q0sfghv7yfl594gjurhyhlhdgm0dtwh4dkjha36` |
+| **ETH / USDT-ERC20 / BNB-BEP20** | `0xB827b5a8B6c5111946c5D872933b2C23484E87dE` |
+| **SOL** | `3ch5aHrPp3CierhiNXmqmtFH2dMHh6Gfv7a97KtLMMCh` |
+| **USDT-TRC20 / TRX** | `TUAyz7TjgJdFVD2oFHWUUTNrzzAnBRgySG` |
+| **TON** | `UQAJmYVuR3hh02etjaPKJF-h6jcpdSnq9ZIFvI64NEskS6tx` |
+
 ## License
 
 MIT — see [LICENSE](LICENSE).
