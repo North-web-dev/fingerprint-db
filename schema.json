@@ -4,6 +4,36 @@
   "required": ["metadata", "browsers"],
   "properties": {
     "metadata": {"type": "object"},
+    "live": {
+      "type": "object",
+      "description": "Auto-updated, freshly-measured real-engine fingerprints (Playwright Chromium/Firefox/WebKit + a curl baseline). Added/refreshed by the weekly measure pipeline; the hand-curated 'browsers' section is independent.",
+      "required": ["updated", "reflector", "engines"],
+      "properties": {
+        "updated": {"type": "string", "format": "date", "description": "ISO date of the latest measurement run."},
+        "reflector": {"type": "string", "description": "Reflector host the handshakes were measured against."},
+        "note": {"type": "string"},
+        "engines": {
+          "type": "object",
+          "description": "Keyed by engine (chromium/firefox/webkit) plus a 'curl' baseline.",
+          "additionalProperties": {
+            "type": "object",
+            "required": ["engine", "version", "user_agent", "tls", "http2", "provenance"],
+            "properties": {
+              "engine": {"type": "string", "description": "Honest engine label, e.g. 'Chromium 156.0.8078.4' — the engine Playwright ships, NOT 'Chrome'."},
+              "version": {"type": "string"},
+              "user_agent": {"type": "string"},
+              "tls": {"type": "object", "required": ["ja3", "ja4"],
+                "properties": {"ja3": {"type": "string"}, "ja3_hash": {"type": "string"}, "ja4": {"type": "string"}}},
+              "http2": {"type": "object", "required": ["akamai_fingerprint"],
+                "properties": {"akamai_fingerprint": {"type": "string"}, "akamai_hash": {"type": "string"}}},
+              "ja4h": {"type": "string"},
+              "provenance": {"type": "object", "required": ["source", "method", "measured"],
+                "properties": {"source": {"type": "string"}, "method": {"type": "string"}, "measured": {"type": "string", "format": "date"}, "measured_at": {"type": "string"}}}
+            }
+          }
+        }
+      }
+    },
     "browsers": {
       "type": "object",
       "additionalProperties": {

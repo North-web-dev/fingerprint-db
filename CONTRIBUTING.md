@@ -10,6 +10,26 @@ dataset worth citing:
 A fabricated or "looks about right" entry is worse than no entry. If you are not
 sure a value is real, do not submit it.
 
+## Two sections: curated vs. live
+
+- **`browsers`** — hand-curated, reproducible profiles keyed on a uTLS
+  `*_Auto` template. This is what you contribute to by hand (below).
+- **`live`** — *auto-generated*, do **not** hand-edit. It is re-measured weekly by
+  [`.github/workflows/measure.yml`](.github/workflows/measure.yml), which runs
+  [`measure/measure.mjs`](measure/measure.mjs) (real Playwright-bundled
+  Chromium/Firefox/WebKit engines + a `curl --http2` baseline, against the
+  reflector) and [`measure/update.py`](measure/update.py). Entries there are
+  labelled by **engine** (e.g. `Chromium 156…`) because Playwright's Chromium is
+  not Google Chrome stable. To refresh it locally:
+
+  ```bash
+  cd measure
+  npm install
+  npx playwright install --with-deps chromium firefox webkit
+  node measure.mjs          # writes measure/live.json (fails if reflector is down)
+  cd .. && python3 measure/update.py && python3 validate.py
+  ```
+
 ## What you can contribute
 
 - A **new browser/profile** (e.g. a new stable Chrome/Firefox/Safari major, Brave,

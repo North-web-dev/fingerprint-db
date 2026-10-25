@@ -5,7 +5,8 @@
     "measured_source": "tls.peet.ws",
     "utls_version": "v1.8.2",
     "updated": "2026-07-03",
-    "note": "JA3/JA4 vary slightly by measuring tool and GREASE; values here measured via uTLS *_Auto templates."
+    "note": "JA3/JA4 vary slightly by measuring tool and GREASE; values here measured via uTLS *_Auto templates.",
+    "live_updated": "2026-10-25"
   },
   "browsers": {
     "chrome": {
@@ -76,6 +77,97 @@
       "http2": {
         "akamai_fingerprint": "3:100;4:4194304|10420225|0|m,s,p,a",
         "akamai_hash": "51bd911b8be80498e6b0004a7f40691f"
+      }
+    }
+  },
+  "live": {
+    "updated": "2026-10-25",
+    "reflector": "fp.shshbshsnang.shop",
+    "note": "Real-engine fingerprints measured via Playwright-bundled browsers. Chromium != Google Chrome stable; Firefox/WebKit are Playwright engine builds. Current + honest, not shipping-browser equivalents.",
+    "engines": {
+      "chromium": {
+        "engine": "Chromium 156.0.8078.4",
+        "version": "156.0.8078.4",
+        "user_agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.8078.4 Safari/537.36",
+        "tls": {
+          "ja3": "771,4865-4866-4867-49195-49199-49196-49200-52393-52392-49171-49172-156-157-47-53,16-13-5-65037-11-10-17613-35-27-18-23-45-65281-0-51-43,4588-29-23-24,0",
+          "ja3_hash": "8d46fb21917160f36ee7674f93e0abfd",
+          "ja4": "t13d1516h2_8daaf6152771_806a8c22fdea"
+        },
+        "http2": {
+          "akamai_fingerprint": "1:65536;2:0;4:6291456;6:262144|15663105|0|m,a,s,p",
+          "akamai_hash": "52d84b11737d980aef856699f885ca86"
+        },
+        "ja4h": "ge20nn120000_1d5643f8516d_000000000000_000000000000",
+        "provenance": {
+          "source": "fp.shshbshsnang.shop",
+          "method": "playwright chromium 156.0.8078.4",
+          "measured": "2026-10-25",
+          "measured_at": "2026-10-25T18:22:03.708Z"
+        }
+      },
+      "firefox": {
+        "engine": "Firefox 157.0",
+        "version": "157.0",
+        "user_agent": "Mozilla/5.0 (X11; Linux x86_64; rv:157.0) Gecko/20100101 Firefox/157.0",
+        "tls": {
+          "ja3": "771,4865-4867-4866-49195-49199-52393-52392-49196-49200-49171-49172-156-157-47-53,0-23-65281-10-11-35-16-5-34-18-51-43-13-45-28-27-65037,4588-29-23-24-25,0",
+          "ja3_hash": "9d42e90b0225e779f03141ddcd699df2",
+          "ja4": "t13d1517h2_8daaf6152771_3cbfd9057e0d"
+        },
+        "http2": {
+          "akamai_fingerprint": "1:65536;2:0;4:131072;5:16384|12517377|0|m,p,a,s",
+          "akamai_hash": "6ea73faa8fc5aac76bded7bd238f6433"
+        },
+        "ja4h": "ge20nn11enus_3901d4197baf_000000000000_000000000000",
+        "provenance": {
+          "source": "fp.shshbshsnang.shop",
+          "method": "playwright firefox 157.0",
+          "measured": "2026-10-25",
+          "measured_at": "2026-10-25T18:22:03.708Z"
+        }
+      },
+      "webkit": {
+        "engine": "WebKit 27.2",
+        "version": "27.2",
+        "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/27.2 Safari/605.1.15",
+        "tls": {
+          "ja3": "771,4866-4867-4865-4868-49196-52393-49325-49162-49195-49324-49161-49200-52392-49172-49199-49171-157-49309-53-156-49308-47-159-52394-49311-57-158-49310-51,5-10-11-13-16-35-51-43-65281-0-45-28-21,23-24-25-29-30-256-257-258-259-260,0",
+          "ja3_hash": "2cbcec37dfff29e4c6a34dd35ebe1d70",
+          "ja4": "t13d2913h2_723694b0fccc_5671b5df5029"
+        },
+        "http2": {
+          "akamai_fingerprint": "4:6291456;1:65536;2:0|15663105|0|m,s,a,p",
+          "akamai_hash": "d718679a0777ff3d3f1e14c356423f0b"
+        },
+        "ja4h": "ge20nn07enus_98b3c1b58505_000000000000_000000000000",
+        "provenance": {
+          "source": "fp.shshbshsnang.shop",
+          "method": "playwright webkit 27.2",
+          "measured": "2026-10-25",
+          "measured_at": "2026-10-25T18:22:03.708Z"
+        }
+      },
+      "curl": {
+        "engine": "curl 7.81.0",
+        "version": "7.81.0",
+        "user_agent": "curl/7.81.0",
+        "tls": {
+          "ja3": "771,4866-4867-4865-49196-49200-159-52393-52392-52394-49195-49199-158-49188-49192-107-49187-49191-103-49162-49172-57-49161-49171-51-157-156-61-60-53-47-255,0-11-10-13172-16-22-23-49-13-43-45-51-21,29-23-30-25-24-256-257-258-259-260,0-1-2",
+          "ja3_hash": "4ea056e63b7910cbf543f0c095064dfe",
+          "ja4": "t13d3113h2_e8f1e7e78f70_ce5650b735ce"
+        },
+        "http2": {
+          "akamai_fingerprint": "3:100;4:33554432;2:0|33488897|0|m,p,s,a",
+          "akamai_hash": "fd07c74c4990fc43ef9f4b3277cf3cf2"
+        },
+        "ja4h": "ge20nn020000_5594a17e7e7e_000000000000_000000000000",
+        "provenance": {
+          "source": "fp.shshbshsnang.shop",
+          "method": "curl --http2 7.81.0",
+          "measured": "2026-10-25",
+          "measured_at": "2026-10-25T18:22:03.708Z"
+        }
       }
     }
   }

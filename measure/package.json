@@ -1,0 +1,16 @@
+{
+  "name": "fingerprint-db-measure",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Automated weekly fingerprint measurement pipeline for fingerprint-db. Launches the real browser engines Playwright bundles (Chromium/Firefox/WebKit) against a live TLS+HTTP/2 reflector and records honestly-provenanced fingerprints.",
+  "scripts": {
+    "measure": "node measure.mjs"
+  },
+  "dependencies": {
+    "playwright-core": "1.64.1"
+  },
+  "devDependencies": {
+    "playwright": "1.64.1"
+  }
+}

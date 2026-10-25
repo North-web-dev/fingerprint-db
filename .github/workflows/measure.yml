@@ -1,0 +1,70 @@
+name: Weekly fingerprint refresh
+
+# Keeps the `live` section of fingerprints.json fresh by actually measuring the
+# real browser engines Playwright bundles (Chromium/Firefox/WebKit) against our
+# live reflector every week. Everyone else ships stale presets; this one stays
+# current. If the reflector is unreachable the run FAILS — it never commits
+# stale or fabricated data.
+
+on:
+  schedule:
+    # Mondays 05:23 UTC (off-minute to avoid the top-of-hour cron stampede).
+    - cron: "23 5 * * 1"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: measure
+  cancel-in-progress: false
+
+jobs:
+  measure:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install measure deps
+        working-directory: measure
+        run: npm install
+
+      - name: Install Playwright browsers
+        working-directory: measure
+        run: npx playwright install --with-deps chromium firefox webkit
+
+      - name: Measure (real handshakes via Playwright + curl)
+        working-directory: measure
+        # Writes measure/live.json. Exits non-zero if the reflector is down,
+        # which fails the job rather than committing stale/fake data.
+        run: node measure.mjs
+
+      - name: Merge fresh measurements into fingerprints.json
+        run: python3 measure/update.py
+
+      - name: Validate (schema + completeness + JA4/hash format)
+        run: |
+          pip install jsonschema
+          python3 validate.py
+          python3 -c "import fingerprint_db; assert fingerprint_db.get('chrome')['tls']['ja4']; print('python loader OK')"
+
+      - name: Commit & push if fingerprints.json changed
+        run: |
+          if git diff --quiet -- fingerprints.json; then
+            echo "No fingerprint changes this week — nothing to commit."
+            exit 0
+          fi
+          DATE=$(date -u +%Y-%m-%d)
+          git config user.name  "North-web-dev"
+          git config user.email "iskandarkhon1221@gmail.com"
+          git add fingerprints.json
+          git commit -m "data: weekly fingerprint refresh (${DATE})"
+          git push

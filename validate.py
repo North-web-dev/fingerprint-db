@@ -85,11 +85,42 @@ def main() -> int:
             fail(f"{name}: http2.akamai_hash '{ah}' is not a 32-char hex hash")
             errors += 1
 
+    # 3. Optional auto-updated 'live' section (fresh real-engine measurements).
+    live = data.get("live")
+    if live is not None:
+        engines = live.get("engines", {})
+        if not engines:
+            fail("live: present but has no engines")
+            errors += 1
+        for name, e in engines.items():
+            tls = e.get("tls", {})
+            ja4 = tls.get("ja4", "")
+            if not JA4_RE.match(ja4):
+                fail(f"live/{name}: tls.ja4 '{ja4}' does not look like a JA4 fingerprint")
+                errors += 1
+            jh = tls.get("ja3_hash")
+            if jh and not HEX32_RE.match(jh):
+                fail(f"live/{name}: tls.ja3_hash '{jh}' is not a 32-char hex hash")
+                errors += 1
+            if not e.get("http2", {}).get("akamai_fingerprint"):
+                fail(f"live/{name}: empty http2.akamai_fingerprint")
+                errors += 1
+            ah = e.get("http2", {}).get("akamai_hash")
+            if ah and not HEX32_RE.match(ah):
+                fail(f"live/{name}: http2.akamai_hash '{ah}' is not a 32-char hex hash")
+                errors += 1
+            prov = e.get("provenance", {})
+            for pf in ("source", "method", "measured"):
+                if not prov.get(pf):
+                    fail(f"live/{name}: missing provenance.{pf}")
+                    errors += 1
+
     if errors:
         print(f"\nINVALID: {errors} problem(s) found.")
         return 1
 
-    print(f"valid: {len(browsers)} browser(s) -> {', '.join(sorted(browsers))}")
+    extra = f" + live({len(live.get('engines', {}))})" if live else ""
+    print(f"valid: {len(browsers)} browser(s) -> {', '.join(sorted(browsers))}{extra}")
     return 0
 
 

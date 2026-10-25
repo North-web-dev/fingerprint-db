@@ -2,3 +2,7 @@
 *.test
 __pycache__/
 *.pyc
+# measurement pipeline build artifacts (data lands in fingerprints.json)
+measure/node_modules/
+measure/live.json
+measure/package-lock.json
